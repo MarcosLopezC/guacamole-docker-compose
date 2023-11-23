@@ -24,8 +24,7 @@ services:
   guacd:
     image: guacamole/guacd
     restart: always
-    networks:
-      network:
+    network_mode: host
     volumes:
       - ./drive:/drive
       - ./record:/record
@@ -39,7 +38,7 @@ services:
       - postgres
       - guacd
     environment:
-      GUACD_HOSTNAME: guacd
+      GUACD_HOSTNAME: localhost
       POSTGRES_DATABASE: ${POSTGRES_DB}
       POSTGRES_HOSTNAME: postgres
       POSTGRES_USER: ${POSTGRES_USER}
